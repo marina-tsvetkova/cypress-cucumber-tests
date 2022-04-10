@@ -5,7 +5,7 @@ When('visit {string}', (url) => {
 });
 
 Then('the correct URL {string} loads', (url) => {
-cy.url().should('eq', `${Cypress.config().baseUrl}${url}`)
+    cy.url().should('eq', `${Cypress.config().baseUrl}${url}`)
 });
 
 When('scroll to {string} section', (section) => {
@@ -13,6 +13,6 @@ When('scroll to {string} section', (section) => {
 });
 
 When('click {string} tab from the main menu', (tabName) => {
-cy.get('.main-link').contains(tabName).click({force: true});
+    cy.get('.main-link').contains(tabName).click({ force: true });
 });
 
