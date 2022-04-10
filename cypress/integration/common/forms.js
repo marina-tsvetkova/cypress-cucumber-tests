@@ -44,5 +44,17 @@ When('click the Consent checkbox', () => {
 });
 
 Then('validate the {string} data entered in {string} input field', (dataType, fieldName) => {
-
+  cy.task('readXlsxFile').then(() => {
+    cy.fixture('testData.json').then((testData) => {
+      testData.forEach((testDataRow) => {
+        const data = {
+          email: testDataRow.email,
+          message: testDataRow.message
+        };
+        typeInTextField(data.email, fieldName);
+        cy.get('input[type="submit"]').click();
+        cy.get('label.input-text-cf').contains(fieldName).closest('p').find('.wpcf7-not-valid-tip').should('contain', data.message);
+      });
+    });
+  });
 });
