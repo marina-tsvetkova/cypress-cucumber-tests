@@ -5,7 +5,7 @@ When('click {string} button', (buttonName) => {
 });
 
 When('click on {string} webelement', (webelementName) => {
-    cy.get(`input[value=${webelementName}]`).click({force:true});
+    cy.get(`input[value=${webelementName}]`).click({ force: true });
 });
 
 Then('{string} button is present', (webelementName) => {

@@ -1,7 +1,7 @@
 Feature: Test Feature
 
 @run
-Scenario: Test Case 1 - Version 2 - external data file
+Scenario: Test Case 1 - external data file
     Given visit '/'
 	And scroll to 'Contacts' section
 	And click 'Contact us' button
@@ -16,8 +16,7 @@ Scenario: Test Case 3 - Required field error message
 	And click 'ACCEPT' button
     When click 'Check our open positions' button
     Then the correct URL 'careers/join-us/' loads
-	#Verify that  'Join Us' page is opened (can verify that URL is correct: http://www.musala.com/careers/join-us/
-    When from the dropdown 'Filter by location' select 'Anywhere'
+	When from the dropdown 'Filter by location' select 'Anywhere'
     And click on 'Automation QA Engineer' job card
     Then verify that 4 main sections are shown
 		|section|
@@ -26,7 +25,6 @@ Scenario: Test Case 3 - Required field error message
 		|Responsibilities| 
 		|What we offer|
     And 'Apply' button is present
-	#And 'Apply' button is on the bottom of the page
     And click on 'Apply' webelement
     And upload a 'Test.docx' document
 	And click the Consent checkbox

@@ -19,7 +19,6 @@ function typeInTextField(value, fieldName) {
     .find('input, textarea').clear({ force: true }).type(value);
 };
 
-
 When('type {string} in {string} input field', (text, fieldName) => {
   typeInTextField(text, fieldName)
 });

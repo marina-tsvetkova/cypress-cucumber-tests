@@ -56,6 +56,37 @@ module.exports = (on, config) => {
     }
   });
 
+  /* on('task', {
+    'readXlsx': readXlsx.read
+  });*/
+
+  on('task', {
+    readXlsxFile() {
+      try {
+        const workBook = XLSX.readFile("./testData/testData.xlsx");
+        //let sheet = workbook.Sheets[workbook.SheetNames[0]];
+        const jsonData = XLSX.utils.sheet_to_json(workBook.Sheets.testData);
+        fsExtra.writeFileSync(
+          "./cypress/fixtures/testData.json",
+
+          JSON.stringify(jsonData)
+        );
+      } catch (e) {
+        throw Error(e);
+      }
+      return null;
+    }
+  });
+
+  on('task', {
+    writeInFile({ fileDir, data }) {
+      const dirname = path.dirname(fileDir);
+      fsExtra.ensureDirSync(dirname);
+      fsExtra.writeFileSync(fileDir, data);
+      return null;
+    }
+  });
+
   on('file:preprocessor', cucumber());
   allureWriter(on, config);
   return config;
